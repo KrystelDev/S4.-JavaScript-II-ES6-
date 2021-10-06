@@ -109,8 +109,12 @@ function moviesAverageByCategory(array, categoria) {
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(array) {
   //Array nova:
-  let clonedArray = JSON.parse(JSON.stringify(array));
-  //[...array]; -> No funciona.
+
+  function creadNewObject (objectFilm){
+    return {...objectFilm};
+  }
+
+  let clonedArray = array.map(creadNewObject);
 
   //Recorre tots els elements de la array
   let result = clonedArray.map(tranformarAMinuts);
@@ -144,7 +148,7 @@ function tranformarAMinuts(pelicula) {
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear(array, any) {
-  let arraynew= JSON.parse(JSON.stringify(array));
+  let arraynew= [...array];
 
   //Buscar totes les pelicules del any X
   let peliculasAny = arraynew.filter(pelicula => pelicula.year == any);
